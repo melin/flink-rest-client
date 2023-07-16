@@ -27,6 +27,7 @@ components:
         status:
           type: string
           enum:
+          - INITIALIZING
           - CREATED
           - RUNNING
           - FAILING
@@ -35,7 +36,22 @@ components:
           - CANCELED
           - FINISHED
           - RESTARTING
-          - SUSPENDING
+          - SUSPENDED
+          - RECONCILING
+    JobStatusInfo:
+      properties:
+        status:
+          type: string
+          enum:
+          - INITIALIZING
+          - CREATED
+          - RUNNING
+          - FAILING
+          - FAILED
+          - CANCELLING
+          - CANCELED
+          - FINISHED
+          - RESTARTING
           - SUSPENDED
           - RECONCILING
     JobIdsWithStatusOverview:
@@ -1703,6 +1719,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AsynchronousOperationResult'
+  /jobs/{jobid}/status:
+    get:
+      tags:
+        - flink
+      operationId: getJobStatus
+      summary: Returns the status of a savepoint operation
+      parameters:
+        - name: jobid
+          in: path
+          description: 32-character hexadecimal string value that identifies a job
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: |-
+            200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatusInfo'
   /jobs/{jobid}/vertices/{vertexid}:
     get:
       tags:
