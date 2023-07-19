@@ -56,6 +56,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.gitee.melin.bee</groupId>
+            <artifactId>bee</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
             <version>${javax.annotation-api.version}</version>
@@ -129,6 +135,7 @@
             <plugin>
                 <groupId>io.swagger.codegen.v3</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
+                <version>3.0.46</version>
                 <executions>
                     <execution>
                         <goals>
