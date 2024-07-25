@@ -43,10 +43,10 @@ The library is available in Maven Central Repository, and GitHub.
 If you are using Maven, add this dependency to your POM:
 
     <dependency>
-        <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.flinkclient</artifactId>
-        <version>1.0.4</version>
-    </dependency>        
+        <groupId>io.github.melin.flink.rest.client</groupId>
+        <artifactId>flink-rest-client</artifactId>
+        <version>1.0-1.18</version>
+    </dependency>   
 
 ## How to generate the code
 

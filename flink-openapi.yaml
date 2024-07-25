@@ -6,7 +6,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: v1/1.17-SNAPSHOT
+  version: v1/1.18-SNAPSHOT
 paths:
   /cluster:
     delete:
@@ -737,6 +737,15 @@ paths:
           schema:
             type: integer
             format: int32
+        - name: failureLabelFilter
+          in: query
+          description: Collection of string values working as a filter in the form of
+            `key:value` pairs allowing only exceptions with ALL of the specified failure
+            labels to be returned.
+          required: false
+          style: form
+          schema:
+            $ref: '#/components/schemas/FailureLabel'
       responses:
         "200":
           description: The request was successful.
@@ -930,6 +939,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AsynchronousOperationResult'
+  /jobs/{jobid}/resource-requirements:
+    get:
+      description: Request details on the job's resource requirements.
+      operationId: getJobResourceRequirements
+      parameters:
+        - name: jobid
+          in: path
+          description: 32-character hexadecimal string value that identifies a job.
+          required: true
+          schema:
+            $ref: '#/components/schemas/JobID'
+      responses:
+        "200":
+          description: The request was successful.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobResourceRequirementsBody'
+    put:
+      description: Request to update job's resource requirements.
+      operationId: updateJobResourceRequirements
+      parameters:
+        - name: jobid
+          in: path
+          description: 32-character hexadecimal string value that identifies a job.
+          required: true
+          schema:
+            $ref: '#/components/schemas/JobID'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobResourceRequirementsBody'
+      responses:
+        "200":
+          description: The request was successful.
   /jobs/{jobid}/savepoints:
     post:
       tags:
@@ -1908,6 +1953,10 @@ components:
           format: int64
       discriminator:
         propertyName: className
+        mapping:
+          completed: '#/components/schemas/CompletedCheckpointStatistics'
+          failed: '#/components/schemas/FailedCheckpointStatistics'
+          in_progress: '#/components/schemas/PendingCheckpointStatistics'
     CheckpointStatisticsSummary:
       type: object
       properties:
@@ -2109,6 +2158,10 @@ components:
       properties:
         exceptionName:
           type: string
+        failureLabels:
+          type: object
+          additionalProperties:
+            type: string
         location:
           type: string
         stacktrace:
@@ -2181,12 +2234,21 @@ components:
               format: int64
             failure_message:
               type: string
+    FailureLabel:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
     Features:
       type: object
       properties:
         web-cancel:
           type: boolean
         web-history:
+          type: boolean
+        web-rescale:
           type: boolean
         web-submit:
           type: boolean
@@ -2542,6 +2604,10 @@ components:
       properties:
         plan:
           $ref: '#/components/schemas/RawJson'
+    JobResourceRequirementsBody:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/JobVertexResourceRequirements'
     JobResult:
       type: object
       properties:
@@ -2645,6 +2711,11 @@ components:
     JobVertexID:
       pattern: "[0-9a-f]{32}"
       type: string
+    JobVertexResourceRequirements:
+      type: object
+      properties:
+        parallelism:
+          $ref: '#/components/schemas/Parallelism'
     JobVertexTaskManagerInfo:
       type: object
       properties:
@@ -2755,6 +2826,15 @@ components:
         value:
           type: integer
           format: int32
+    Parallelism:
+      type: object
+      properties:
+        lowerBound:
+          type: integer
+          format: int32
+        upperBound:
+          type: integer
+          format: int32
     PendingCheckpointStatistics:
       type: object
       allOf:
@@ -2807,6 +2887,7 @@ components:
       type: string
       enum:
         - CHECKPOINT
+        - UNALIGNED_CHECKPOINT
         - SAVEPOINT
         - SYNC_SAVEPOINT
     RestoreMode:
@@ -2837,6 +2918,10 @@ components:
             $ref: '#/components/schemas/ExceptionInfo'
         exceptionName:
           type: string
+        failureLabels:
+          type: object
+          additionalProperties:
+            type: string
         location:
           type: string
         stacktrace:
@@ -2988,6 +3073,9 @@ components:
           type: string
       discriminator:
         propertyName: className
+        mapping:
+          completed: '#/components/schemas/CompletedSubtaskCheckpointStatistics'
+          pending: '#/components/schemas/PendingSubtaskCheckpointStatistics'
     SubtaskExecutionAttemptAccumulatorsInfo:
       type: object
       properties:
