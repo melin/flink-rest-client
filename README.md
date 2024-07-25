@@ -43,8 +43,8 @@ The library is available in Maven Central Repository, and GitHub.
 If you are using Maven, add this dependency to your POM:
 
     <dependency>
-        <groupId>io.github.melin.flink.rest.client</groupId>
-        <artifactId>flink-rest-client</artifactId>
+        <groupId>io.github.melin.flink.client</groupId>
+        <artifactId>flink-client_</artifactId>
         <version>1.0-1.18</version>
     </dependency>   
 
