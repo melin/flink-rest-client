@@ -44,7 +44,7 @@ If you are using Maven, add this dependency to your POM:
 
     <dependency>
         <groupId>io.github.melin.flink.client</groupId>
-        <artifactId>flink-client_</artifactId>
+        <artifactId>flink-client</artifactId>
         <version>1.0-1.18</version>
     </dependency>   
 
