@@ -1803,10 +1803,7 @@ components:
       type: object
       properties:
         operation:
-          oneOf:
-            - $ref: '#/components/schemas/AsynchronousOperationInfo'
-            - $ref: '#/components/schemas/CheckpointInfo'
-            - $ref: '#/components/schemas/SavepointInfo'
+          type: object
         status:
           $ref: '#/components/schemas/QueueStatus'
     CheckpointAlignment:
