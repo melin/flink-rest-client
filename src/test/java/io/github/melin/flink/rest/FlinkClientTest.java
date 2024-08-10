@@ -1,7 +1,7 @@
 package io.github.melin.flink.rest;
 
 import com.gitee.melin.bee.util.JsonUtils;
-import io.github.melin.flink.rest.client.api.ApiClient;
+import io.github.melin.flink.rest.client.ApiClient;
 import io.github.melin.flink.rest.client.api.FlinkRestClientApi;
 import io.github.melin.flink.rest.client.model.*;
 import org.springframework.http.ResponseEntity;
