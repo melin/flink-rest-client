@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>io.github.melin.flink.client</groupId>
+    <groupId>io.github.melin</groupId>
     <artifactId>flink-client</artifactId>
     <version>1.0-1.18</version>
     <packaging>jar</packaging>
@@ -23,6 +23,37 @@
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
         <swagger-annotations.version>2.2.22</swagger-annotations.version>
     </properties>
+
+    <name>Flink Rest Client</name>
+    <url>https://github.com/melin/flink-client</url>
+
+    <issueManagement>
+        <system>gitee</system>
+        <url>https://github.com/melin/flink-client/issues</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/melin/flink-client.git</connection>
+        <developerConnection>scm:git:https://github.com/melin/flink-client.git</developerConnection>
+        <url>https://github.com/melin/flink-client</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>melin</name>
+            <email>libinsong1204@gmail.com</email>
+            <url>https://github.com/melin/superior-sql-formatter</url>
+        </developer>
+    </developers>
+
     <dependencies>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
@@ -118,42 +149,11 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <failOnError>false</failOnError>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
 
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>7.7.0</version>
+                <version>7.8.0</version>
                 <executions>
                     <execution>
                         <id>generate-client</id>
@@ -179,49 +179,124 @@
                 </executions>
             </plugin>
 
-            <!--<plugin>
-                <groupId>io.swagger.codegen.v3</groupId>
-                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>3.0.59</version>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
                 <executions>
+                    <!-- Replacing default-compile as it is treated specially by maven -->
                     <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <library>resttemplate</library>
-                            <language>java</language>
-                            <invokerPackage>io.github.melin.flink.rest.client.api</invokerPackage>
-                            <modelPackage>io.github.melin.flink.rest.client.model</modelPackage>
-                            <apiPackage>io.github.melin.flink.rest.client.api</apiPackage>
-                            <generateApiTests>false</generateApiTests>
-                            <generateModelTests>false</generateModelTests>
-                            <generateApiDocumentation>false</generateApiDocumentation>
-                            <generateModelDocumentation>false</generateModelDocumentation>
-                            <generateSupportingFiles>true</generateSupportingFiles>
-                            <supportingFilesToGenerate>ApiClient.java,ApiException.java,ApiResponse.java,ApiCallback.java,Authentication.java,JSON.java,Pair.java,Configuration.java,ProgressRequestBody.java,ProgressResponseBody.java,HttpBasicAuth.java,ApiKeyAuth.java,OAuth.java,StringUtil.java,RFC3339DateFormat.java</supportingFilesToGenerate>
-                            <configOptions>
-                                <hideGenerationTimestamp>false</hideGenerationTimestamp>
-                                <sourceFolder>src/main/java</sourceFolder>
-                                <java8>true</java8>
-                                <useTags>true</useTags>
-                                <dateLibrary>java8</dateLibrary>
-                                <singleContentTypes>true</singleContentTypes>
-                                <interfaceOnly>true</interfaceOnly>
-                            </configOptions>
-                            <output>${project.build.directory}/generated-sources/swagger</output>
-                        </configuration>
+                        <id>default-compile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <!-- Replacing default-testCompile as it is treated specially by maven -->
+                    <execution>
+                        <id>default-testCompile</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>java-compile</id>
+                        <phase>compile</phase>
+                        <goals> <goal>compile</goal> </goals>
+                    </execution>
+                    <execution>
+                        <id>java-test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals> <goal>testCompile</goal> </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <arguments>-Psonatype-oss-release</arguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <inherited>true</inherited>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <excludeResources>true</excludeResources>
+                    <useDefaultExcludes>true</useDefaultExcludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <inherited>true</inherited>
+                <executions>
+                    <execution>
+                        <id>bundle-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <maxmemory>1024</maxmemory>
+                    <encoding>UTF-8</encoding>
+                    <show>protected</show>
+                    <notree>true</notree>
+
+                    <!-- Avoid running into Java 8's very restrictive doclint issues -->
+                    <failOnError>false</failOnError>
+                    <doclint>none</doclint>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <distributionManagement>
         <repository>
-            <id>maven-snapshots</id>
-            <name>maven-snapshots</name>
-            <url>http://172.18.1.33:8081/repository/maven-snapshots/</url>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
