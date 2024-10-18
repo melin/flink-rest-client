@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.melin</groupId>
     <artifactId>flink-client</artifactId>
-    <version>1.0-1.18</version>
+    <version>1.20</version>
     <packaging>jar</packaging>
     <description>Java library for managing Apache Flink via the Monitoring REST API</description>
 
@@ -100,7 +100,7 @@
         <dependency>
             <groupId>com.gitee.melin.bee</groupId>
             <artifactId>bee</artifactId>
-            <version>1.9.2</version>
+            <version>1.9.3</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
