@@ -21,7 +21,7 @@
         <mockito.version>4.0.0</mockito.version>
         <awaitility.version>4.2.0</awaitility.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
-        <swagger-annotations.version>2.2.22</swagger-annotations.version>
+        <swagger-annotations.version>2.2.25</swagger-annotations.version>
     </properties>
 
     <name>Flink Rest Client</name>
