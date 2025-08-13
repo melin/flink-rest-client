@@ -18,7 +18,7 @@ If you are using Maven, add this dependency to your POM:
 
     <dependency>
         <groupId>io.github.melin</groupId>
-        <artifactId>flink-client</artifactId>
+        <artifactId>flink-rest-client</artifactId>
         <version>1.20.1</version>
     </dependency>
 

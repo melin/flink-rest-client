@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.melin</groupId>
-    <artifactId>flink-client</artifactId>
+    <artifactId>flink-rest-client</artifactId>
     <version>1.20.1</version>
     <packaging>jar</packaging>
     <description>Java library for managing Apache Flink via the Monitoring REST API</description>
@@ -294,7 +294,7 @@
                         <version>0.8.0</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <deploymentName>flink-client-${project.version}</deploymentName>
+                            <deploymentName>flink-rest-client-${project.version}</deploymentName>
                             <publishingServerId>central</publishingServerId>
                             <autoPublish>true</autoPublish>
                         </configuration>
