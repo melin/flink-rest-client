@@ -5,8 +5,10 @@ This library provides a Java client for managing Apache Flink via the [Monitorin
 The client is generated with [Swagger Codegen](https://swagger.io/tools/swagger-codegen/) from an OpenAPI specification file.
 
 ## Build
-> export GPG_TTY=$(tty)
-> mvn clean deploy -Prelease
+```
+export GPG_TTY=$(tty)
+mvn clean deploy -Pdeploy
+```
 
 ## How to get the binaries
 
@@ -17,7 +19,7 @@ If you are using Maven, add this dependency to your POM:
     <dependency>
         <groupId>io.github.melin</groupId>
         <artifactId>flink-client</artifactId>
-        <version>1.0-1.18</version>
+        <version>1.20.1</version>
     </dependency>
 
 ## Documentation
