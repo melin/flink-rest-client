@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.melin</groupId>
     <artifactId>flink-rest-client</artifactId>
-    <version>1.20.2</version>
+    <version>1.20.3</version>
     <packaging>jar</packaging>
     <description>Java library for managing Apache Flink via the Monitoring REST API</description>
 
@@ -105,7 +105,7 @@
         <dependency>
             <groupId>com.gitee.melin</groupId>
             <artifactId>bee</artifactId>
-            <version>1.9.14</version>
+            <version>1.9.15</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
@@ -158,7 +158,7 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>7.15.0</version>
+                <version>7.17.0</version>
                 <executions>
                     <execution>
                         <id>generate-client</id>
@@ -291,7 +291,7 @@
                     <plugin>
                         <groupId>org.sonatype.central</groupId>
                         <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>0.8.0</version>
+                        <version>0.9.0</version>
                         <extensions>true</extensions>
                         <configuration>
                             <deploymentName>flink-rest-client-${project.version}</deploymentName>
