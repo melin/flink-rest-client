@@ -25,17 +25,17 @@
     </properties>
 
     <name>Flink Rest Client</name>
-    <url>https://github.com/melin/flink-client</url>
+    <url>https://github.com/melin/polaris-rest-client</url>
 
     <issueManagement>
         <system>gitee</system>
-        <url>https://github.com/melin/flink-client/issues</url>
+        <url>https://github.com/melin/polaris-rest-client/issues</url>
     </issueManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/melin/flink-client.git</connection>
-        <developerConnection>scm:git:https://github.com/melin/flink-client.git</developerConnection>
-        <url>https://github.com/melin/flink-client</url>
+        <connection>scm:git:https://github.com/melin/polaris-rest-client.git</connection>
+        <developerConnection>scm:git:https://github.com/melin/polaris-rest-client.git</developerConnection>
+        <url>https://github.com/melin/polaris-rest-client</url>
     </scm>
 
     <licenses>
