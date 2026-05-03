@@ -4,13 +4,16 @@ import com.gitee.melin.bee.util.JsonUtils;
 import io.github.melin.flink.rest.client.ApiClient;
 import io.github.melin.flink.rest.client.api.FlinkRestClientApi;
 import io.github.melin.flink.rest.client.model.*;
+import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
 public class FlinkClientTest {
-    public static void main(String[] args) {
+
+    @Test
+    public void test() {
         RestTemplate restTemplate = new RestTemplate();
         ApiClient apiClient = new ApiClient(restTemplate);
         FlinkRestClientApi flinkApi = new FlinkRestClientApi(apiClient);

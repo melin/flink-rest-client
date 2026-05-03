@@ -106,6 +106,7 @@
             <groupId>com.gitee.melin</groupId>
             <artifactId>bee</artifactId>
             <version>1.9.22</version>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
