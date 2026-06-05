@@ -3034,19 +3034,7 @@ components:
         resource:
           $ref: '#/components/schemas/ResourceProfileInfo'
     SlotSharingGroupId:
-      type: object
-      properties:
-        bytes:
-          type: array
-          items:
-            type: string
-            format: byte
-        lowerPart:
-          type: integer
-          format: int64
-        upperPart:
-          type: integer
-          format: int64
+      type: string
     StatsSummaryDto:
       type: object
       properties:
