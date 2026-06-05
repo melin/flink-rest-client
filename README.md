@@ -26,7 +26,7 @@ If you are using Maven, add this dependency to your POM:
 
 Create the Flink client:
 
-    FlinkApi api = new FlinkApi();
+    FlinkRestClientApi api = new FlinkRestClientApi();
 
 Configure host and port of the server:
 
