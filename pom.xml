@@ -124,12 +124,6 @@
             <version>6.0.3</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <version>1.14.4</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
@@ -168,6 +162,9 @@
                             <inputSpec>${project.basedir}/flink-openapi.yaml</inputSpec>
                             <generatorName>java</generatorName>
                             <library>resttemplate</library>
+                            <!-- 💡 核心配置：关闭测试代码生成 -->
+                            <generateApiTests>false</generateApiTests>     <!-- 不生成 API 测试类 -->
+                            <generateModelTests>false</generateModelTests> <!-- 不生成 Model 测试类 -->
                             <generateModelDocumentation>false</generateModelDocumentation>
                             <generateApiDocumentation>false</generateApiDocumentation>
                             <apiPackage>io.github.melin.flink.rest.client.api</apiPackage>
@@ -178,6 +175,14 @@
                                 <java8>true</java8>
                             </configOptions>
                             <output>${project.build.directory}/generated-sources/openapi</output>
+
+                            <typeMappings>
+                                <typeMapping>MetricCollectionResponseBody=java.util.List&lt;io.github.melin.flink.rest.client.model.Metric&gt;</typeMapping>
+                            </typeMappings>
+
+                            <importMappings>
+                                <importMapping>MetricCollectionResponseBody=java.util.List</importMapping>
+                            </importMappings>
                         </configuration>
                     </execution>
                 </executions>

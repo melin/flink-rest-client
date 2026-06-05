@@ -4,7 +4,7 @@ import com.gitee.melin.bee.util.JsonUtils;
 import io.github.melin.flink.rest.client.ApiClient;
 import io.github.melin.flink.rest.client.api.FlinkRestClientApi;
 import io.github.melin.flink.rest.client.model.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
